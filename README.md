@@ -1,2 +1,2 @@
 # ML
-General, 
+About Machine Learning
