@@ -1,2 +1,2 @@
-# ML
-About Machine Learning
+# MNIST
+MNIST
