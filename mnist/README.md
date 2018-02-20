@@ -1,2 +1,0 @@
-# MNIST
-MNIST using TensorFlow
