@@ -1,2 +1,2 @@
-# MNIST
-MNIST using TensorFlow
+# DeepLearning
+Repository for Deep Learning
