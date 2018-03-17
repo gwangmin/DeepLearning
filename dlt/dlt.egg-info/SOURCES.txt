@@ -1,7 +1,7 @@
 README.md
 setup.py
-dlt/DNN.py
 dlt/__init__.py
+dlt/dnn.py
 dlt.egg-info/PKG-INFO
 dlt.egg-info/SOURCES.txt
 dlt.egg-info/dependency_links.txt

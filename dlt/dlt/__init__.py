@@ -1,2 +1,3 @@
-from . import DNN
+from .dnn import DNN
+
 
