@@ -1,3 +1,4 @@
 # mnist
 About MNIST  
-Using TensorFlow
+mnist_tf.py: Using TensorFlow
+mnist_keras.ipynb: Using Keras in Google Colab

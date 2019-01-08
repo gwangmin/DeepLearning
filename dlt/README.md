@@ -12,5 +12,10 @@ This toolkit provides Neural Network.
 * matplotlib
 
 ## Contents
-* DNN(Deep Neural Network) : DNN() in DNN.py
+### dlt.nets
+* DNNClassifier(units) : DNN(Deep Neural Network) Classifier
+* DNNRegressor(units) : DNN Regressor
+### dlt.plot
+* showLoss(history) : show loss graph
+* showAcc(history) : show accuracy graph
 

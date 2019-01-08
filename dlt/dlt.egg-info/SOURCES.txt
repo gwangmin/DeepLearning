@@ -1,7 +1,8 @@
 README.md
 setup.py
 dlt/__init__.py
-dlt/dnn.py
+dlt/nets.py
+dlt/plot.py
 dlt.egg-info/PKG-INFO
 dlt.egg-info/SOURCES.txt
 dlt.egg-info/dependency_links.txt
