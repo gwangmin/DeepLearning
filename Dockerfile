@@ -13,6 +13,8 @@ RUN conda install -y beautifulsoup4
 RUN conda install -y -c menpo opencv
 RUN conda install -y gensim
 RUN conda install -y jupyterlab
+RUN conda install -c conda-forge nodejs
+RUN jupyter labextension install @jupyterlab/toc
 
 WORKDIR /root
 
