@@ -1,0 +1,2 @@
+python setup.py install
+로 설치
