@@ -35,5 +35,5 @@ This toolkit provides Neural Network.
 ### keras.datasets(https://keras.io/datasets/)
 * for using mnist, follow these  
 	1. (x_train,y_train), (x_test,y_test) = keras.datasets.mnist.load_data()
-	2. reshaping, type casting, normalization the x data
+	2. reshaping, type casting, scaling the x data
 	3. convert to one hot label
