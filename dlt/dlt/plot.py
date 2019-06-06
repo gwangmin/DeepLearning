@@ -7,6 +7,7 @@ import matplotlib.pylab as plt
 def showLoss(history):
     """
     Show loss graph in train, validation. Based on history.
+    Usage: showLoss(history)
     """
     plt.plot(history.history['loss'])
     plt.plot(history.history['val_loss'])
@@ -19,6 +20,7 @@ def showLoss(history):
 def showAcc(history):
     """
     Show Accuracy graph in train, validation. Based on history.
+    Usage: showAcc(history)
     """
     plt.plot(history.history['acc'])
     plt.plot(history.history['val_acc'])
@@ -31,6 +33,7 @@ def showAcc(history):
 def visualizeFilter(filters, size=1):
     """
     Visualize the conv filter(s)
+    Usage: visualizeFilter(list of filter, figure size)
     
     size: 1 or tuple(rows,cols).
     """

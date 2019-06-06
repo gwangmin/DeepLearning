@@ -11,6 +11,7 @@ import numpy as np
 class DNNClassifier(Sequential):
     """
     Classifier using fully connected neural network.
+    Usage: DNNClassifier([units...])
 
     activation of hidden layer = relu
     activation of output layer = softmax
@@ -39,6 +40,7 @@ class DNNClassifier(Sequential):
 class DNNRegressor(Sequential):
 	"""
 	Regressor using fc nets.
+    Usage: DNNRegressor([units...])
 
 	activation of hidden layer = relu
 	loss = mse

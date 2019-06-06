@@ -1,3 +1,5 @@
 *.DS_Store
 dlt/설치.txt
-*.*
+*.ipynb_checkpoints
+*.ipynb
+
