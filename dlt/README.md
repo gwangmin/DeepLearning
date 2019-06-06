@@ -30,6 +30,7 @@ This toolkit provides Neural Network.
 ### fit method
 * use validation_data or validation_split arg for validation
 * use EarlyStopping() callback for early stopping
+* use shuffle arg
 ### visualize
 * use dlt.plot or use tensorboard
 ### keras.datasets(https://keras.io/datasets/)
