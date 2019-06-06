@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='dlt',
-		version='1.1.0',
+		version='1.1.1',
 		url='https://github.com/gwangmin/DeepLearning/tree/master/dlt',
 		author='gwangmin',
 		author_email='ygm.gwangmin@gmail.com',
