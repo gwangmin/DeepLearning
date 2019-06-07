@@ -27,6 +27,15 @@ This toolkit provides Neural Network.
 ### preprocessing
 * must use numpy.array
 * use keras.utils.to_categorical() for one hot
+* if image data, use below
+###
+	train_datagen = ImageDataGenerator(rescale=1./255)
+	
+	train_generator = train_datagen.flow_from_directory(
+	'warehouse/handwriting_shape/train',
+	target_size=(24, 24),
+	batch_size=3,
+	class_mode='categorical')
 ### fit method
 * use validation_data or validation_split arg for validation
 * use EarlyStopping() callback for early stopping
