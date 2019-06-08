@@ -27,7 +27,7 @@ This toolkit provides Neural Network.
 ### preprocessing
 * must use numpy.array
 * use keras.utils.to_categorical() for one hot
-* use keras.preprocessing.MinMaxScaler
+* use sklearn.preprocessing.MinMaxScaler
 * if image data, refer https://keras.io/preprocessing/image/
 ### fit method
 * use validation_data or validation_split arg for validation
