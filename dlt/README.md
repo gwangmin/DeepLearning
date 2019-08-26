@@ -32,6 +32,7 @@ This toolkit provides Neural Network.
 ### fit method
 * use validation_data or validation_split arg for validation
 * use EarlyStopping() callback for early stopping
+* use ModelCheckpoint callback for model checkpoint
 * use shuffle arg
 ### visualize
 * use dlt.plot or use tensorboard
