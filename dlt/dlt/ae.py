@@ -24,17 +24,29 @@ class SimpleAE:
 
     def build_model(self, input_dim, latent_dim, last_activation, optimizer, loss):
         '''
-        Build network
+        Build entire autoencoder
         '''
-        input_x = Input(shape=(input_dim,))
-        encode = Dense(latent_dim, activation='relu')(input_x)
-        self.encoder = Model(inputs=input_x, outputs=encode)
+        # Build encoder
+        self.build_encoder(input_dim, latent_dim)
+        # Build decoder
+        self.build_decoder(input_dim, latent_dim, last_activation)
+        # Build ae
+        self.ae = Model(inputs=self.input_x, outputs=self.decoder(self.encoder(self.input_x)))
+        self.ae.compile(optimizer=optimizer, loss=loss)
 
+    def build_encoder(self, input_dim, latent_dim):
+        '''
+        Build encoder
+        '''
+        self.input_x = Input(shape=(input_dim,))
+        encode = Dense(latent_dim, activation='relu')(self.input_x)
+        self.encoder = Model(inputs=self.input_x, outputs=encode)
+
+    def build_decoder(self, input_dim, latent_dim, last_activation):
+        '''
+        Build decoder
+        '''
         input_latent = Input(shape=(latent_dim,))
         decode = Dense(input_dim, activation=last_activation)(input_latent)
         self.decoder = Model(inputs=input_latent, outputs=decode)
-
-        last_layer = self.decoder.layers[-1](encode)
-        self.ae = Model(inputs=input_x, outputs=last_layer)
-        self.ae.compile(optimizer=optimizer, loss=loss)
 
