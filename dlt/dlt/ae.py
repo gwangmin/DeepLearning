@@ -78,7 +78,7 @@ class SimpleDAE:
         noise = np.random.normal(loc=mean, scale=std, size=inputs.shape)
         result = inputs + noise
         if norm_clip:
-            result = np.clip(inputs, 0., 1.)
+            result = np.clip(result, 0., 1.)
         return result
 
     def build_model(self, input_dim, latent_dim, last_activation, optimizer, loss):
