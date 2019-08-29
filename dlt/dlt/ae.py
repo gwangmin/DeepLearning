@@ -11,9 +11,9 @@ class SimpleAE:
     Simple AutoEncoder
     Architecture: Input(input_dim) - Dense - Latent vector(latent_dim) - Dense - Output(input_dim)
     member:
-        obj.encoder: Encoder
-        obj.decoder: Decoder
-        obj.ae: Entire AutoEncoder
+        encoder: Encoder
+        decoder: Decoder
+        ae: Entire AutoEncoder
     '''
 
     def __init__(self, input_dim, latent_dim, last_activation='sigmoid', optimizer='adam', loss='mse'):
