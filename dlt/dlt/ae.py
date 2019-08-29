@@ -61,7 +61,7 @@ class SimpleDAE:
         decoder: Decoder
         ae: Entire AutoEncoder
     method:
-        add_noise(inputs[, mean, std, norm_clip])
+        add_random_noise(inputs[, mean, std, norm_clip])
     '''
 
     def __init__(self, input_dim, latent_dim, last_activation='sigmoid', optimizer='adam', loss='mse'):
