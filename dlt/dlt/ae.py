@@ -70,7 +70,7 @@ class SimpleDAE:
         '''
         self.build_model(input_dim, latent_dim, last_activation, optimizer, loss)
 
-    def add_noise(self, inputs, mean=0, std=1, norm_clip=False):
+    def add_random_noise(self, inputs, mean=0, std=1, norm_clip=False):
         '''
         Add random noise to input
         (from normal dist.)
