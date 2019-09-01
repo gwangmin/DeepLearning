@@ -115,9 +115,8 @@ class SimpleDAE:
 class SimpleVAE:
     '''
     Simple Variational AutoEncoder
-    Architecture: Input - Dense - z_mean
-                        - Dense - z_log_var
-                        - Dense - z(sampled) - Dense - Output
+    Architecture: Input - Dense - z_mean    - z(sampled) - Dense - Output
+                          Dense - z_log_var
     member:
         encoder: Encoder
         decoder: Decoder
