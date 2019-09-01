@@ -7,6 +7,32 @@ from keras.layers import Lambda, Input, Dense
 from keras.losses import mse, binary_crossentropy
 from keras import backend as K
 import numpy as np
+import matplotlib.pyplot as plt
+
+
+def scatter_on_latent_space(encoder, data, n=10000, figsize=(12,10), cmap=plt.cm.rainbow):
+    '''
+    Scatter plot on latent space
+
+    Args:
+        encoder: Encoder part
+        data: tuple. (x,y)
+        n: (Optional) Number of point to scatter
+        figsize: (Optional) Figure size
+        cmap: (Optional) matplotlib cmap. ex. plt.cm.Blues, plt.cm.Reds, ...
+    '''
+    # Data
+    x_data,y_data = data
+    # Size
+    plt.figure(figsize=figsize)
+    # Scatter
+    z = encoder.predict(x_data[:n])
+    plt.scatter(z[:, 0], z[:, 1], c=y_data[:n], cmap=cmap)
+    # Show
+    plt.plt.colorbar()
+    plt.xlabel("z[0]")
+    plt.ylabel("z[1]")
+    plt.show()
 
 
 class SimpleAE:
