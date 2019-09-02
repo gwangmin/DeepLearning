@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 def scatter_on_latent_space(encoder, data, n=10000, figsize=(12,10), cmap=plt.cm.rainbow):
     '''
-    Scatter plot on latent space
+    Scatter plot on 2D latent space
 
     Args:
         encoder: Encoder part
