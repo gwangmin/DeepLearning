@@ -16,7 +16,7 @@ def scatter_on_latent_space(encoder, data, n=10000, figsize=(12,10), cmap=plt.cm
 
     Args:
         encoder: Encoder part
-        data: tuple. (x,y)
+        data: tuple (x,y). encoder's input, label.
         n: (Optional) Number of point to scatter
         figsize: (Optional) Figure size
         cmap: (Optional) matplotlib cmap. ex. plt.cm.Blues, plt.cm.Reds, ...
