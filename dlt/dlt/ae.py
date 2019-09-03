@@ -10,13 +10,117 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+def ae_view(models, data, range_=((0,12),(0,12)), scatter_points=10000, scatter_figsize=(12,10), cmap=plt.cm.rainbow):
+    '''
+    Show AutoEncoder's result
+
+    Args:
+        models: tuple. (entire ae, encoder part, decoder part)
+        data: tuple. (autoencoder's inputs, labels). Using these data.
+        range_: (Optional) range to visualize
+        scatter_points: (Optional) Number of point to scatter
+        scatter_figsize: (Optional) figsize for scatter
+        cmap: (Optional) matplotlib cmap to scatter plot. ex. plt.cm.Blues, plt.cm.Reds, ...
+    '''
+    # Params interpret
+    ae, encoder, decoder = models
+    x, y = data
+    latent_dim = K.int_shape(decoder.get_input_at(0))[1]
+    shape = x[0].shape
+    ndim = len(shape)
+    if ndim == 3:
+        if shape[-1] == 1:
+            data_type = 'gray'
+        else:
+            data_type = 'rgb'
+    else:
+        data_type = 'not image'
+
+    # Show compare image
+    if data_type != 'not image':
+        compare_image(ae, data, data_type)
+
+    # Visualize latent space
+    if latent_dim == 2:
+        scatter_on_latent_space(encoder, data, n=scatter_points, figsize=scatter_figsize, cmap=cmap)
+    ae_images(decoder, range_=range_)
+
+def ae_images(decoder, range_=((0,12),(0,12))):
+    '''
+    Visualize manifold
+
+    Args:
+        decoder: decoder part
+        range_: (Optional) range to visualize
+    '''
+    # display a 30x30 2D manifold of the digits
+    n = 30
+    digit_size = 28
+    figure = np.zeros((digit_size * n, digit_size * n))
+    # linearly spaced coordinates corresponding to the 2D plot
+    # of digit classes in the latent space
+    grid_x = np.linspace(range_[0][0], range_[0][1], n)
+    grid_y = np.linspace(range_[1][0], range_[1][1], n)[::-1]
+
+    for i, yi in enumerate(grid_y):
+        for j, xi in enumerate(grid_x):
+            z = np.array([[xi, yi]])
+            x_decoded = decoder.predict(z)
+            digit = x_decoded[0].reshape(digit_size, digit_size)
+            figure[i * digit_size: (i + 1) * digit_size,
+                   j * digit_size: (j + 1) * digit_size] = digit
+
+    plt.figure(figsize=(10, 10))
+    start_range = digit_size // 2
+    end_range = n * digit_size + start_range + 1
+    pixel_range = np.arange(start_range, end_range, digit_size)
+    sample_range_x = np.round(grid_x, 1)
+    sample_range_y = np.round(grid_y, 1)
+    plt.xticks(pixel_range, sample_range_x)
+    plt.yticks(pixel_range, sample_range_y)
+    plt.xlabel("z[0]")
+    plt.ylabel("z[1]")
+    plt.imshow(figure, cmap='Greys_r')
+    plt.show()
+
+def compare_image(ae, data, image_type):
+    '''
+    Show and compare
+    original, ae output image
+
+    Args:
+        ae: entire autoencoder
+        data: tuple. (autoencoder inputs, labels)
+        image_type: 'gray' or 'rgb'. 'gray' - 1 channel, 'rgb' - 3 channel
+    '''
+    x,y = data
+    for i in [0,2]:
+        n = np.random.randint(len(x))
+        # Original data
+        plt.subplot(2, 2, i+1)
+        plt.title('Original ' + str(y[n]))
+        if image_type == 'gray':
+            plt.imshow(x[n].reshape(28,28))
+        elif image_type == 'rgb':
+            plt.imshow(x[n])
+        # AutoEncoder output
+        plt.subplot(2, 2, i+2)
+        plt.title('AE')
+        if image_type == 'gray':
+            plt.imshow(ae.predict_on_batch(x[n:n+1]).reshape(28,28))
+        elif image_type == 'rgb':
+            plt.imshow(ae.predict_on_batch(x[n:n+1]))
+    plt.tight_layout()
+    plt.axis('off')
+    plt.show()
+
 def scatter_on_latent_space(encoder, data, n=10000, figsize=(12,10), cmap=plt.cm.rainbow):
     '''
     Scatter plot on 2D latent space
 
     Args:
         encoder: Encoder part
-        data: tuple (x,y). encoder's input, label.
+        data: tuple (encoder's input, label).
         n: (Optional) Number of point to scatter
         figsize: (Optional) Figure size
         cmap: (Optional) matplotlib cmap. ex. plt.cm.Blues, plt.cm.Reds, ...
