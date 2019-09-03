@@ -133,7 +133,7 @@ def scatter_on_latent_space(encoder, data, n=10000, figsize=(12,10), cmap=plt.cm
     z = encoder.predict(x_data[:n])
     plt.scatter(z[:, 0], z[:, 1], c=y_data[:n], cmap=cmap)
     # Show
-    plt.plt.colorbar()
+    plt.colorbar()
     plt.xlabel("z[0]")
     plt.ylabel("z[1]")
     plt.show()
