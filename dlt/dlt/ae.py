@@ -43,11 +43,11 @@ def ae_view(models, data, range_=((0,12),(0,12)), scatter_points=10000, scatter_
     # Visualize latent space
     if latent_dim == 2:
         scatter_on_latent_space(encoder, data, n=scatter_points, figsize=scatter_figsize, cmap=cmap)
-    ae_images(decoder, range_=range_)
+        ae_images(decoder, range_=range_)
 
 def ae_images(decoder, range_=((0,12),(0,12))):
     '''
-    Visualize manifold
+    Visualize 2D manifold
 
     Args:
         decoder: decoder part
